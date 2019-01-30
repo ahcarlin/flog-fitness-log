@@ -1,0 +1,37 @@
+{
+  "name": "flatiron-final-project",
+  "version": "1.0.0",
+  "description": "Mobile Fitness Tracker",
+  "main": "index.js",
+  "scripts": {
+    "test": "tost"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AHCarl/flatiron-final-project.git"
+  },
+  "keywords": [
+    "ReactNative",
+    "fitness",
+    "lifting",
+    "exercise",
+    "mobile"
+  ],
+  "author": "Alexander H. Carlin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AHCarl/flatiron-final-project/issues"
+  },
+  "homepage": "https://github.com/AHCarl/flatiron-final-project#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "http": "0.0.0",
+    "jwt-simple": "^0.5.5",
+    "mongoose": "^5.4.6",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0"
+  }
+}

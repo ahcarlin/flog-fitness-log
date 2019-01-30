@@ -1,0 +1,44 @@
+import Keys from '../constants/Keys'
+const LOADING = 'frontend/redux/LOADING'
+const FETCHING = 'frontend/redux/FETCHING'
+
+export default function reducer(state = {
+  user: {},
+  loading: false
+}, action = {}) {
+  switch (action.type) {
+    case 'LOADING':
+      return {
+        ...state, loading: true
+      }
+    case 'FETCHING':
+      return {...state, loading: false, user: action.payload }
+    default:
+      return state
+  }
+}
+
+export function loadUserOnLogin(user) {
+  return { type: FETCHING, user}
+}
+
+export function userIsLoading() {
+  return { type: LOADING }
+}
+
+export function getUser() {
+  return dispatch => {
+    dispatch({type: 'LOADING'})
+    return fetch(`${Keys.userUrl}/mydata`, {
+      method: "POST",
+      headers: {
+        'Content-Type':'application/json'
+      },
+      body: JSON.stringify({"email":"roddytoddman@goog.com"})
+    })
+      .then(res => res.json())
+      .then(user => dispatch({type: 'FETCHING', payload: user}))
+
+  }
+}
+
