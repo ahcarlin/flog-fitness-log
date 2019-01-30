@@ -1,6 +1,8 @@
-# flatiron-final-project
-
+# fLog: Mobile Fitness Logging App
 Mobile workout logging app with a notepad-like interface that parses user input using a simple Domain Specific Language. It should be simple to use for everyone, yet allow in-depth data analytics for enthusiasts.
+
+This is a continuation of my final project at Flatiron School. This is my passion project, an app I would use that no one makes, so you can bet your bottom dollar I'll be seeing this one through.
+
 
 ## Functionality
 
