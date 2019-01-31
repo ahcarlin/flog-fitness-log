@@ -5,8 +5,9 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import SignInScreen from '../screens/SignInScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import WorkoutHistoryScreen from '../screens/WorkoutHistoryScreen';
 import LogWorkoutScreen from '../screens/LogWorkoutScreen'
+import SettingsScreen from '../screens/SettingsScreen'
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -26,34 +27,6 @@ HomeStack.navigationOptions = {
   ),
 };
 
-const SignInStack = createStackNavigator({
-  SignIn: SignInScreen,
-});
-
-SignInStack.navigationOptions = {
-  tabBarLabel: 'Sign In',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-log-in'}
-    />
-  ),
-};
-
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
-});
-
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
-    />
-  ),
-};
-
 const LogWorkoutStack = createStackNavigator({
   LogWorkout: LogWorkoutScreen,
 });
@@ -68,10 +41,24 @@ LogWorkoutStack.navigationOptions = {
   ),
 };
 
+const WorkoutHistoryStack = createStackNavigator({
+  WorkoutHistory: WorkoutHistoryScreen,
+})
+
+WorkoutHistoryStack.navigationOptions = {
+  tabBarLabel: 'History',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'ios-options' : 'md-book'}
+    />
+  ),
+};
+
+
 
 export default createBottomTabNavigator({
   HomeStack,
   LogWorkoutStack,
-  SignInStack,
-  SettingsStack,
+  WorkoutHistoryStack,
 });

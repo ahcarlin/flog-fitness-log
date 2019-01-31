@@ -26,7 +26,7 @@ export function userIsLoading() {
   return { type: LOADING }
 }
 
-export function getUser() {
+export function getUser(email) {
   return dispatch => {
     dispatch({type: 'LOADING'})
     return fetch(`${Keys.userUrl}/mydata`, {
@@ -34,7 +34,7 @@ export function getUser() {
       headers: {
         'Content-Type':'application/json'
       },
-      body: JSON.stringify({"email":"roddytoddman@goog.com"})
+      body: JSON.stringify({"email": email})
     })
       .then(res => res.json())
       .then(user => dispatch({type: 'FETCHING', payload: user}))

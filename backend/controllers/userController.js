@@ -25,3 +25,14 @@ exports.readMe = (req, res, next) => {
     }
   })
 }
+
+exports.addWorkout = (req, res, next) => {
+  User.update({email: req.body.email}, { $push: { workouts: req.body.workout} }, (err, user) => {
+      if (err) {
+        console.log(err)
+      } else {
+        console.log(user)
+        res.status(200).json(user)
+      }
+    })
+}

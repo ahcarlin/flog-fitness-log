@@ -21,6 +21,8 @@ module.exports = (app) => {
   app.post('/api/user/signup', Authentication.signup)
   app.post('/api/user/signin', requireSignIn, Authentication.signin)
 
+  app.patch('/api/user/log', UserController.addWorkout)
+
   app.get('/api/users', UserController.readAll)
   app.post(`/api/user/mydata`, UserController.readMe)
 }

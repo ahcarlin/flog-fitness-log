@@ -33,7 +33,7 @@ export default class AppNavigator extends React.Component {
   render() {
     return (
     <Provider store={store}>
-      <App persistenceKey={Keys.persistenceKey} />
+      <App  />
     </Provider>
     )
   }

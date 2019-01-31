@@ -21,7 +21,7 @@ class HomeScreen extends React.Component {
   };
 
   componentDidMount() {
-    this.props.getUser()
+    // this.props.getUser()
     console.log(this.props.user)
   }
 
@@ -29,49 +29,28 @@ class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
       <Header 
-      centerComponent={{ text: 'Home Screen', style: { color: '#fff' } }}
+      centerComponent={{ text: 'Welcome to FLog', style: { color: '#fff' } }}
       rightComponent={<SignOutIcon />}
       />
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <View style={styles.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                  ? require('../assets/images/robot-dev.png')
-                  : require('../assets/images/robot-prod.png')
-              }
-              style={styles.welcomeImage}
-            />
-          </View>
-
           <View style={styles.getStartedContainer}>
-            {this._maybeRenderDevelopmentModeWarning()}
-
-            <Text style={styles.getStartedText}>Get started by opening</Text>
-
-            <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-              <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
-            </View>
-
             <Text style={styles.getStartedText}>
-              Change this text and your app will automatically reload.
+              Welcome to FLog, the mobile fitness log that takes care of all that painful exercise tracking for you.
+              Just type in your information like you would on a notepad, follow the super simple syntax, and it'll be 
+              safely tucked away, ready for all kinds of interesting number crunching if you so wish.
+            </Text>
+          </View>
+          <View style={{marginBottom: 20, marginTop: 20}}></View>
+          <View style={styles.getStartedContainer} >
+            <Text style={styles.developmentModeText}> Name of Your Exercise </Text>
+            <Text style={styles.developmentModeText}> Weight * Reps * Sets </Text>
+            <Text style={styles.developmentModeText}>
+             ...and that's all, folks! Repeat as necessary, then hit that "Log It" button.
             </Text>
           </View>
 
-          <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
-            </TouchableOpacity>
-          </View>
         </ScrollView>
 
-        <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
-
-          <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
-          </View>
-        </View>
       </View>
     );
   }
@@ -110,13 +89,7 @@ class HomeScreen extends React.Component {
   };
 }
 
-const mapStateToProps = (state) => {
-  return {
-    user: state
-  }
-}
-
-export default connect(mapStateToProps, {getUser})(HomeScreen)
+export default connect(state => ({user: state}))(HomeScreen)
 
 const styles = StyleSheet.create({
   container: {
