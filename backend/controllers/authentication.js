@@ -10,11 +10,13 @@ const tokenForUser = (user) => {
 exports.signin = (req, res, next) => {
   const token = tokenForUser(req.user)
   res.json({token: token})
-}
+  }
+
 
 exports.signup = (req, res, next) => {
   const email = req.body.email
   const password = req.body.password
+  const bodyweight = req.body.bodyweight
 
   if (!email || !password) {
     return res.status(422).send({ error: 'You must provide an email and password.' })
@@ -30,7 +32,8 @@ exports.signup = (req, res, next) => {
 
     const user = new User({
       email: email,
-      password: password
+      password: password,
+      bodyweight: bodyweight
     })
 
     user.save((err) => {
