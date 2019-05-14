@@ -29,8 +29,11 @@ userSchema.methods.comparePassword = function(candidatePassword, callback) {
 }
 const ModelClass = mongoose.model('users', userSchema);
 
-let newDate = new Date
+let newDate = new Date('2019-01-02T06:00:00.000Z')
 let roddyDate = newDate.toDateString()
+
+let otherDate = new Date 
+toddyDate = otherDate.toDateString()
 
 ModelClass.find({}, (err, users) => {
   if (err) {
@@ -101,6 +104,32 @@ ModelClass.find({}, (err, users) => {
               ]
             }
           ]
+        },
+        {
+          date: toddyDate,
+          bodyweightToday: 87,
+          exercisesToday: [
+            {
+              exercise: 'Squat',
+              data: [ 
+                {
+                  weight: 145,
+                  reps: 5,
+                  sets: 5
+                }
+              ] 
+            },
+            {
+              exercise: 'Bench Press',
+              data: [
+                {
+                  weight: 100,
+                  reps: 5,
+                  sets: 5
+                }
+              ]
+            }
+          ]
         }
       ]
   })
@@ -140,7 +169,7 @@ ModelClass.find({}, (err, users) => {
 })
 
 //db update test
-// User.findOneAndUpdate({email: "stromkuzewon@goog.com"}, {bodyweight: 181}, (err, user) => {
+// User.findOneAndUpdate({email: "stromkuzewon@goog.com"}, {bodyweight: 188}, (err, user) => {
 //   if (err) {
 //     console.log(err)
 //   } else {
@@ -150,13 +179,13 @@ ModelClass.find({}, (err, users) => {
 
 let myWorkout = {
   date: roddyDate,
-  bodyweightToday: 88,
+  bodyweightToday: 87,
   exercisesToday: [
     {
       exercise: 'Squat',
       data: [ 
         {
-          weight: 135,
+          weight: 145,
           reps: 5,
           sets: 5
         }
@@ -166,7 +195,7 @@ let myWorkout = {
       exercise: 'Bench Press',
       data: [
         {
-          weight: 95,
+          weight: 100,
           reps: 5,
           sets: 5
         }
@@ -176,11 +205,12 @@ let myWorkout = {
 }
 
 // test add new workout
-// User.findOneAndUpdate({email: "stromkuzewon@goog.com"}, {workouts: myWorkout}, (err, user) => {
+// ModelClass.findOneAndUpdate({email: "roddytoddman@goog.com"}, {workouts: myWorkout}, (err, user) => {
 //   if (err) {
 //     console.log(err)
 //   } else {
 //     user.workouts.push(myWorkout)
+//     user.save()
 //   }
 // })
 
