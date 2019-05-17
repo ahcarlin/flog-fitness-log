@@ -52,12 +52,11 @@ export default class SignInScreen extends React.Component {
         <View style={{alignItems: 'center'}}>
           <FormLabel>EMAIL</FormLabel>  
           <FormInput inputStyle={styles.input} value={this.state.email} textContentType={'emailAddress'} textAlign={'center'} onChangeText={(email) => this.setState({email})}/>
-          {/* <FormValidationMessage>{'Please enter your email'}</FormValidationMessage> */}
           <FormLabel>PASSWORD</FormLabel>
-          <FormInput inputStyle={styles.input} value={this.state.password} textContentType={'password'} textAlign={'center'} secureTextEntry={true} onChangeText={(password) => this.setState({password})}/>
-          {/* <FormValidationMessage>{'Please enter your password'}</FormValidationMessage> */}
-          <Button title={"SIGN IN"} buttonStyle={styles.inButton} onPress={() => this._signIn()}></Button>
+          <FormInput inputStyle={styles.input} value={this.state.password} textContentType={'password'} textAlign={'center'} secureTextEntry={true} onChangeText={(password) => this.setState({password:password, error: null})}/>
+          <FormValidationMessage>{this.state.error}</FormValidationMessage>
         </View>
+        <Button title={"Sign In"} buttonStyle={styles.inButton} onPress={() => this._signIn()}></Button>
         <Button title="Click here to sign up!" buttonStyle={styles.upButton} onPress={this.navigateToSignUp}></Button>
       </View>
     );
