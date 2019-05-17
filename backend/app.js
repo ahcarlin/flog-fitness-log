@@ -16,7 +16,7 @@ const server = http.createServer(app)
 const port = 5000
 
 console.log('Connecting to Local Database.');
-mongoose.connect('mongodb://localhost/fitpad', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost/flog', { useNewUrlParser: true })
 
 server.listen(port)
 console.log(`NodeJS Server running on port ${port}.`);
