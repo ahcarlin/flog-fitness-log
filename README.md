@@ -14,20 +14,10 @@ This is a continuation of my final project at Flatiron School. This is my passio
 - Certain metrics will be displayed by default, most will be optional
   - Metrics are based on calculations from existing data, so user can enable/disable at any time
 
-
-## Domain
-- User has many Exercises 
-- User has many Workouts
-- Many to Many relationship between Workouts & Exercises (WorkoutExercises join class)
-
-But I'm using a non-relational database.
-
 ## Technology
 React Native, Reactive Native Elements, React Native Navigation, Redux, Node.js, Express, MongoDB
 
 No external APIs
-
-Development will be Android-centric since I don't have an iPhone
 
 ## DSL
 Example input: 
