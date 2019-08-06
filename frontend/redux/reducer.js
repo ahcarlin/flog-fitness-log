@@ -1,7 +1,10 @@
 import Keys from '../constants/Keys'
+
+//Actions
 const LOADING = 'frontend/redux/LOADING'
 const FETCHING = 'frontend/redux/FETCHING'
 
+//Reducer
 export default function reducer(state = {
   user: {},
   loading: false
@@ -18,6 +21,7 @@ export default function reducer(state = {
   }
 }
 
+//Action Creators
 export function loadUserOnLogin(user) {
   return { type: FETCHING, user}
 }
