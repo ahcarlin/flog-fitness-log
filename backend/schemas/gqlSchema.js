@@ -4,7 +4,6 @@ const Exercise = require('../models/Exercise');
 const PersonalRecord = require('../models/personalRecord');
 const Workout = require('../models/workout');
 const WorkoutExercise = require('../models/workoutExercise');
-const ExerciseData = require('../models/exerciseData');
 const graphqlIsoDate = require('graphql-iso-date');
 
 const { GraphQLObjectType, 
@@ -51,11 +50,7 @@ const ExerciseType = new GraphQLObjectType({
         name: { type: GraphQLString},
         isTimed: { type: GraphQLBoolean },
         personalRecords: {
-            type: new GraphQLList(PersonalRecordType),
-            resolve(parent, args) {
-                //console.log(parent)
-                return PersonalRecord.find({exerciseId: parent.id})
-            }
+            type: new GraphQLList(PersonalRecordType)
         }
     })
 });
@@ -63,7 +58,6 @@ const ExerciseType = new GraphQLObjectType({
 const PersonalRecordType = new GraphQLObjectType({
     name: "PersonalRecord",
     fields: () => ({
-        id: { type: GraphQLID },
         repCount: { type: GraphQLInt },
         amount: { type: GraphQLFloat },
         date: { type: GraphQLDate }
@@ -123,7 +117,7 @@ const RootQuery = new GraphQLObjectType({
         exercises: {
             type: new GraphQLList(ExerciseType),
             resolve(parent, args) {
-                return Exercise.find();
+                return Exercise.find({});
             }
         }
     }

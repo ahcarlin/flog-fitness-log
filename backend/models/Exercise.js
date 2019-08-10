@@ -8,7 +8,20 @@ const exerciseSchema = new Schema({
         unique: true
     },
     isTimed: Boolean,
-    userId: String
+    userId: String,
+    personalRecords: [
+        {
+            date: Date,
+            repCount: {
+                type:Number,
+                required: true
+            },
+            amount: {
+                type:Number,
+                required: true 
+            },
+        }
+    ]
 })
 
 module.exports = mongoose.model('Exercise', exerciseSchema);
