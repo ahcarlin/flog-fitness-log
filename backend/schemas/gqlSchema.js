@@ -121,6 +121,31 @@ const RootQuery = new GraphQLObjectType({
     }
 });
 
+const Mutation = new GraphQLObjectType({
+    name: "Mutation",
+    fields: {
+        addUser: {
+            type: UserType,
+            args: {
+                email: { type: new GraphQLNonNull(GraphQLString) },
+                password: { type: new GraphQLNonNull(GraphQLString) },
+                bodyweight: { type: GraphQLFloat },
+                isMetric: { type: GraphQLBoolean },
+            },
+            resolve(parent, args) {
+                let user = new User({
+                    email: args.email,
+                    password: args.password,
+                    bodyweight: args.bodyweight,
+                    isMetric: args.isMetric
+                });
+                return user.save();
+            }
+        }
+    }
+})
+
 module.exports = new GraphQLSchema({
-    query: RootQuery
+    query: RootQuery,
+    mutation: Mutation
 })
