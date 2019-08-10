@@ -1,7 +1,6 @@
 const graphql = require('graphql');
 const User = require('../models/newUser');
 const Exercise = require('../models/Exercise');
-const PersonalRecord = require('../models/personalRecord');
 const Workout = require('../models/workout');
 const WorkoutExercise = require('../models/workoutExercise');
 const graphqlIsoDate = require('graphql-iso-date');
@@ -46,7 +45,6 @@ const UserType = new GraphQLObjectType({
 const ExerciseType = new GraphQLObjectType({
     name: "Exercise",
     fields: () => ({
-        id: { type: GraphQLID },
         name: { type: GraphQLString},
         isTimed: { type: GraphQLBoolean },
         personalRecords: {
