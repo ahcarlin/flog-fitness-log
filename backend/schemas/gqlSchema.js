@@ -89,13 +89,6 @@ const WorkoutExerciseType = new GraphQLObjectType({
     name: "WorkoutExercise",
     fields: () => ({
         name: { type: GraphQLString },
-        // exerciseData: {
-        //     type: new GraphQLList(ExerciseDataType),
-        //     resolve(parent, args) {
-        //         console.log(parent)
-        //         return ExerciseData.find({workoutExerciseId: parent.id});
-        //     }
-        // }
         exerciseData: {
             type: new GraphQLList(ExerciseDataType)
         }
