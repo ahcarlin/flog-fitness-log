@@ -88,14 +88,16 @@ const WorkoutType = new GraphQLObjectType({
 const WorkoutExerciseType = new GraphQLObjectType({
     name: "WorkoutExercise",
     fields: () => ({
-        id: { type: GraphQLID },
         name: { type: GraphQLString },
+        // exerciseData: {
+        //     type: new GraphQLList(ExerciseDataType),
+        //     resolve(parent, args) {
+        //         console.log(parent)
+        //         return ExerciseData.find({workoutExerciseId: parent.id});
+        //     }
+        // }
         exerciseData: {
-            type: new GraphQLList(ExerciseDataType),
-            resolve(parent, args) {
-                console.log(parent)
-                return ExerciseData.find({workoutExerciseId: parent.id});
-            }
+            type: new GraphQLList(ExerciseDataType)
         }
     })
 });
@@ -103,7 +105,6 @@ const WorkoutExerciseType = new GraphQLObjectType({
 const ExerciseDataType = new GraphQLObjectType({
     name: "ExerciseData",
     fields: () => ({
-        id: { type: GraphQLID },
         weight: { type: GraphQLFloat },
         reps: { type: GraphQLInt },
         sets: { type: GraphQLInt }
