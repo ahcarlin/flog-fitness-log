@@ -14,6 +14,8 @@ const { GraphQLObjectType,
     GraphQLList,
     GraphQLNonNull,
     GraphQLBoolean,
+    GraphQLInputObjectType,
+    GraphQLInputObjectMap,
     GraphQL
 } = graphql;
 
@@ -121,6 +123,15 @@ const RootQuery = new GraphQLObjectType({
     }
 });
 
+const inputExerciseDataType = new GraphQLInputObjectType({
+    name: 'ExerciseDataInput',
+    fields: {
+        weight: { type: GraphQLFloat },
+        reps: { type: GraphQLInt },
+        sets: { type: GraphQLInt }
+    }
+})
+
 const Mutation = new GraphQLObjectType({
     name: "Mutation",
     fields: {
@@ -145,9 +156,7 @@ const Mutation = new GraphQLObjectType({
         addWorkout: {
             type: WorkoutType,
             args: {
-                datestring: { 
-                    type: new GraphQLNonNull(GraphQLString)
-                },
+                datestring: { type: new GraphQLNonNull(GraphQLString) },
                 bodyweightToday: { type: new GraphQLNonNull(GraphQLFloat) },
                 userId: { type: GraphQLString }
             },
@@ -158,6 +167,24 @@ const Mutation = new GraphQLObjectType({
                     userId: args.userId
                 });
                 return workout.save();
+            }
+        },
+        addWorkoutExercise: {
+            type: WorkoutExerciseType,
+            args: {
+                name: { type: new GraphQLNonNull(GraphQLString) },
+                exerciseId: { type: new GraphQLNonNull(GraphQLString) },
+                workoutId: { type: new GraphQLNonNull(GraphQLString) },
+                exerciseData: { type: new GraphQLList(inputExerciseDataType) }
+            },
+            resolve(parent, args) {
+                let workoutExercise = new WorkoutExercise({
+                    name: args.name,
+                    exerciseId: args.exerciseId,
+                    workoutId: args.workoutId,
+                    exerciseData: args.exerciseData
+                });
+                return workoutExercise.save();
             }
         }
     }
