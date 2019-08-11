@@ -141,6 +141,24 @@ const Mutation = new GraphQLObjectType({
                 });
                 return user.save();
             }
+        },
+        addWorkout: {
+            type: WorkoutType,
+            args: {
+                datestring: { 
+                    type: new GraphQLNonNull(GraphQLString)
+                },
+                bodyweightToday: { type: new GraphQLNonNull(GraphQLFloat) },
+                userId: { type: GraphQLString }
+            },
+            resolve(parent, args) {
+                let workout = new Workout({
+                    date: new Date(args.datestring),
+                    bodyweightToday: args.bodyweightToday,
+                    userId: args.userId
+                });
+                return workout.save();
+            }
         }
     }
 })
