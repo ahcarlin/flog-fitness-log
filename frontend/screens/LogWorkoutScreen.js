@@ -33,9 +33,9 @@ class LogWorkoutScreen extends React.Component {
   }
 
   setDate = () => {
-    let newDate = new Date
-    let currentDate = newDate.toDateString()
-    this.setState({date: currentDate})
+    let newDate = new Date;
+    let currentDate = newDate.toDateString();
+    this.setState({date: currentDate});
   }
 
   _handleSubmit = () => {
